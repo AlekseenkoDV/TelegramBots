@@ -32,4 +32,24 @@ public class Tools
         return ret;
 //        return ResourceBundle.getBundle("bot_conf", new Locale("ru_RU")).getString("bot_name");
     }
+
+    public static void printOut(String botName, String msg)
+    {
+        System.out.println("[" + Thread.currentThread().getName() + "][" + Thread.currentThread().getId() + "][" + botName + "] " + msg);
+    }
+
+    public static void printOut(String msg)
+    {
+        System.out.println("[" + Thread.currentThread().getName() + "][" + Thread.currentThread().getId() + "]" + msg);
+    }
+
+    public static void printErr(String botName, String msg)
+    {
+        System.out.println("[" + Thread.currentThread().getName() + "][" + Thread.currentThread().getId() + "][" + botName + "] " + msg);
+    }
+
+    public static void printErr(String msg)
+    {
+        System.out.println("[" + Thread.currentThread().getName() + "][" + Thread.currentThread().getId() + "]" + msg);
+    }
 }

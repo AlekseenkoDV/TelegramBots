@@ -8,7 +8,6 @@ package TelegramBots.Commands;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -16,18 +15,27 @@ import java.util.Map;
  */
 public enum Commands
 {
+    UNK(Arrays.asList(new TelegramBotType[]
+    {
+    }), "<N/A>", "Неизвестная команда"),
     START(Arrays.asList(new TelegramBotType[]
     {
-        TelegramBotType.ADMIN
+        TelegramBotType.ADMIN,
+        TelegramBotType.HOLDER
     }), "/start", "Начать"),
     HELP(Arrays.asList(new TelegramBotType[]
     {
-        TelegramBotType.ADMIN
+        TelegramBotType.ADMIN,
+        TelegramBotType.HOLDER
     }), "/help", "Помощь"),
     BLACKLIST_WORD(Arrays.asList(new TelegramBotType[]
     {
         TelegramBotType.ADMIN
-    }), "/blacklistword", "Добавить файл с черным списком слов (стоп слова)");
+    }), "/blacklistword", "Добавить файл с черным списком слов (стоп слова)"),
+    HOLDLIST(Arrays.asList(new TelegramBotType[]
+    {
+        TelegramBotType.HOLDER
+    }), "/holdlist", "Список ботов");
 
     private List<TelegramBotType> tBots;
     private String command;
@@ -58,6 +66,22 @@ public enum Commands
             }
         }
         return ret;
+    }
+
+    public static Commands checkCommand(String command)
+    {
+        switch (command)
+        {
+            case "/start":
+                return START;
+            case "/help":
+                return HELP;
+            case "/blacklistword":
+                return BLACKLIST_WORD;
+            case "/holdlist":
+                return HOLDLIST;
+        }
+        return UNK;
     }
 
     @Override

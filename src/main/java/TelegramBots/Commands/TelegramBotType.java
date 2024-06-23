@@ -11,7 +11,8 @@ package TelegramBots.Commands;
  */
 public enum TelegramBotType
 {
-    ADMIN("Администратор", 1);
+    ADMIN("Администратор", 1),
+    HOLDER("Держатель", 2);
     
     private String name;
     private Integer code;

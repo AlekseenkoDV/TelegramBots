@@ -3,11 +3,8 @@ package TelegramBots.Bots.AdminBot;
 import TelegramBots.Commands.Commands;
 import TelegramBots.Commands.TelegramBotType;
 import TelegramBots.TelegramBot;
-import TelegramBots.Tools;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.objects.Chat;
@@ -114,34 +111,6 @@ public class AdminBot extends TelegramBot
         {
             ex.printStackTrace();
         }
-    }
-
-    @Override
-    public String getBotToken()
-    {
-        try
-        {
-            return Tools.getBotToken(this.getClass().getSimpleName());
-        }
-        catch (Exception ex)
-        {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
-        }
-        return "";
-    }
-
-    @Override
-    public String getBotUsername()
-    {
-        try
-        {
-            return Tools.getBotName(this.getClass().getSimpleName());
-        }
-        catch (Exception ex)
-        {
-            Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
-        }
-        return "";
     }
 
     @Override

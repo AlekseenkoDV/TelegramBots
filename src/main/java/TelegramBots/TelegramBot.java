@@ -3,6 +3,8 @@ package TelegramBots;
 import TelegramBots.Bots.AdminBot.AdminBot;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ImportResource;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.objects.Update;
 

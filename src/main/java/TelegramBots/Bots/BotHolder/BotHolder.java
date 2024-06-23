@@ -68,10 +68,17 @@ public class BotHolder extends TelegramBot
                 switch (cmd)
                 {
                     case START:
-                        execute(new SendMessage(msg.getChatId().toString(), "Привет и добро пожаловать"));
+                        if (!read)
+                        {
+                            execute(new SendMessage(msg.getChatId().toString(), "Привет и добро пожаловать!\n"
+                                    + "Вы можете хранить во мне просто список каналов, ботов, которыми Вы часто пользуетесь\n"
+                                    + "Я их сохраню и покажу Вам их когда Вы попросите\n"
+                                    + "Инструкция: Нужно присалать ссылку на бота https://t.me/ИмяБота или просто @ИмяБота, всё это можно взять из его профиля"));
+                        }
                         return;
                     case HELP:
-                        execute(new SendMessage(msg.getChatId().toString(), "Что я умею"));
+                        execute(new SendMessage(msg.getChatId().toString(), "Интсрукция как пользоваться:\n"
+                                + "Нужно прислать ссылку а бота https://t.me/ИмяБота или @ИмяБота"));
                         return;
                     case HOLDLIST:
                         if (!read)
@@ -94,6 +101,8 @@ public class BotHolder extends TelegramBot
                             sb.append(line).append("\n");
                         }
                         execute(new SendMessage(msg.getChatId().toString(), sb.toString()));
+                        reader.close();
+                        fr.close();
                         return;
                 }
             }
@@ -113,7 +122,8 @@ public class BotHolder extends TelegramBot
                     sb.append(line).append("\n");
                 }
             }
-
+            
+            String text = msg.getText().replaceAll("", "@");
             sb.append(msg.getText());
 
             FileWriter wr = new FileWriter(fl);
